@@ -13,6 +13,18 @@ and open the template in the editor.
   color:transparent;
   -webkit-background-clip: text;
   background-clip: text;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.odd{
+    background-color: gray;
+}
+.even{
+    background-color: black;
+}
+
+td{
+    padding: 10px;
 }
         </style>
         <meta charset="UTF-8">
@@ -26,10 +38,12 @@ and open the template in the editor.
         $date = $xml -> Cube -> Cube -> attributes()[0];
         echo "<h1><span class='rainbow'>Курсы на " .$date."</span></h1>";
         echo "<table>";
-        echo "<span style='color:white'<tr><td>Валюта </span></tr></td>";
+        echo "<tr><td><span style='color:white'>Валюта </span></td></tr>";
         foreach ($xml -> Cube -> Cube->Cube as $pair) {
             $attr = $pair->attributes();
-            echo "<h4><span class='rainbow'>".$attr[0]."-".$attr[1]."</span></h4></br>";
+            $classname=($count%2 !=0) ? "odd" : "even";
+            echo "<tr class='".$classname."'><td><span class='rainbow'>".$attr[0]."-".$attr[1]."</span></td></tr>";
+            $count++;
         }
         ?>
     </body>
