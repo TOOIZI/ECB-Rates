@@ -6,6 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
+        
         <style>
             .rainbow {
   background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
@@ -15,9 +16,10 @@ and open the template in the editor.
   background-clip: text;
   margin-top: 0px;
   margin-bottom: 0px;
+  font:  50px Comic Sans MS;
 }
 .odd{
-    background-color: gray;
+    background-color: #111;
 }
 .even{
     background-color: black;
@@ -38,7 +40,7 @@ td{
         $date = $xml -> Cube -> Cube -> attributes()[0];
         echo "<h1><span class='rainbow'>Курсы на " .$date."</span></h1>";
         echo "<table>";
-        echo "<tr><td><span style='color:white'>Валюта </span></td></tr>";
+        echo "<tr><td><span style='color:red'>Валюта </span></td></tr>";
         foreach ($xml -> Cube -> Cube->Cube as $pair) {
             $attr = $pair->attributes();
             $classname=($count%2 !=0) ? "odd" : "even";
@@ -46,5 +48,6 @@ td{
             $count++;
         }
         ?>
+        <a href="indexnoaesthetics.php">no aesthetics</a>
     </body>
 </html>
