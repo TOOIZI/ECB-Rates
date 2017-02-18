@@ -46,11 +46,11 @@ and open the template in the editor.
                             <option>EUR</option>
                             <?php
                             foreach ($xml->Cube->Cube->Cube as $pair) :
-                            $attr = $pair->attributes();
-                            ?>
-                            <option value="<?= $attr[0]; ?>"><?= $attr[0]; ?></option>
+                                $attr = $pair->attributes();
+                                ?>
+                                <option value="<?= $attr[0]; ?>"><?= $attr[0]; ?></option>
                             <?php endforeach; ?>
-                            
+
                         </select>
                     </div>
                     <div class="form-group">
@@ -59,18 +59,18 @@ and open the template in the editor.
                             <option>EUR</option>
                             <?php
                             foreach ($xml->Cube->Cube->Cube as $pair) :
-                            $attr = $pair->attributes();
-                            ?>
-                            <option value="<?= $attr[0]; ?>"><?= $attr[0]; ?></option>
+                                $attr = $pair->attributes();
+                                ?>
+                                <option value="<?= $attr[0]; ?>"><?= $attr[0]; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-primary">Посчитать</button>
+                        <button type="button" id="calcBtn" class="btn btn-primary">Посчитать</button>
                     </div>
                     <div class="form-group">
                         <label>Вы получите</label>
-                        <input type="text" class="form-control" id="outCurrencyAmount" readonly>
+                        <input type="text" class="form-control" id="outCurrencyText" readonly>
                     </div>
                 </form>
 
@@ -80,8 +80,19 @@ and open the template in the editor.
 
 
 
-
-
+        <script>
+            var rates = {};
+            rates['EUR'] = 1;
+                        <?php
+                foreach ($xml->Cube->Cube->Cube as $pair) :
+                $attr = $pair->attributes();
+            ?>
+            rates ['<?= $attr[0]; ?>'] = <?= $attr[1] ?>;
+            <?php endforeach; ?>
+                console.log(rates);
+                
+        </script>
+        <script src="js/calc.js"></script>
 
     </body>
 </html>

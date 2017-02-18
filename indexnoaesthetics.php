@@ -16,7 +16,6 @@ and open the template in the editor.
         $url = 'http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml';
         $xml = simplexml_load_file($url) or die("Error: Cannot create object");
         $date = $xml->Cube->Cube->attributes()[0];
-        
         echo '<div class="row">';
         echo '<div class="col-md-3 col-md-offset-1">';
         echo "<h1><span>Курсы на " . $date . "</span></h1>";
